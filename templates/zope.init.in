@@ -1,0 +1,88 @@
+#!/bin/bash
+#
+# Starts the Zope instance daemon
+#
+# chkconfig: 345 95 5
+# description: Runs Zope instance for running Plone
+# processname: python
+#
+# Source function library.
+. /etc/init.d/functions
+
+RETVAL=0
+
+bin_dir="${buildout:bin-directory}"
+incoming_instances=(${instances})
+instances=()
+
+test -x $bin_dir || exit 0
+for instance in ${startbrace}incoming_instances[@]${endbrace}
+do
+        test -x $bin_dir/$instance \
+            && instances=( "${startbrace}instances[@]${endbrace}" $instance ) \
+            || echo $"Warning: couldn't find $instance in $bin_dir"
+done
+
+start() {
+	for instance in ${startbrace}instances[@]${endbrace}
+	do
+		echo -n $"Starting Zope $instance: "
+        TZ="AEST-10" su buildout -c "$bin_dir/$instance start"
+	done
+}
+
+
+stop() {
+	for instance in ${startbrace}instances[@]${endbrace}
+	do
+		echo -n $"Stopping Zope $instance: "
+        TZ="AEST-10" su buildout -c "$bin_dir/$instance stop"
+	done
+}
+
+
+restart() {
+	for instance in ${startbrace}instances[@]${endbrace}
+	do
+		echo -n $"Restarting Zope $instance: "
+        TZ="AEST-10" su buildout -c "$bin_dir/$instance restart"
+	done
+}	
+
+
+reload() {
+	for instance in ${startbrace}instances[@]${endbrace}
+	do
+		echo -n $"Reloading Zope $instance: "
+        TZ="AEST-10" su buildout -c "$bin_dir/$instance reload"
+	done
+}	
+
+status_at() {
+	for instance in ${startbrace}instances[@]${endbrace}
+	do
+		echo -n $"Getting Zope status for $instance: "
+        TZ="AEST-10" su buildout -c "$bin_dir/$instance status"
+	done
+}
+
+case "$1" in
+start)
+	start
+	;;
+stop)
+	stop
+	;;
+reload|restart)
+	restart
+	;;
+status)
+	status_at
+	;;
+*)
+	echo $"Usage: $0 {start|stop|restart|reload|status}"
+	exit 1
+esac
+
+exit 0
+

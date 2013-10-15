@@ -18,3 +18,10 @@ your favourite OS and run Buildout accordingly::
     ./bin/buildout
     #Start resulting Plone installation
     ./bin/instance1 fg
+
+Requirements
+------------
+
+* For default installation, ``mail.espaces.edu.au`` must point to a 
+  valid SMTP mail service. At the time of writing, this is a ``CNAME``
+  record in DNS that points to a relevant SMTP service for cloud operation.

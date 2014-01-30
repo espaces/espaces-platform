@@ -8,7 +8,7 @@ Quick start
 -----------
 
 Bootstrap your environment with the automated deployment configuration
-(powered by Vagrant for development, and Salt for provisioning located at
+(powered by Vagrant for development, and Salt for provisioning) located at
 https://github.com/espaces/espaces-deployment. 
 
 Otherwise, install relevant packages for a default Plone 4.3.x installation on

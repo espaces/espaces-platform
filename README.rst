@@ -2,7 +2,9 @@ eSpaces Platform Buildout
 =========================
 
 This Buildout configuration creates a Plone-based environment for operating
-eSpaces, an environment for collaboration in Australian research communities.
+eSpaces, an environment for collaboration in research communities.  This
+specific configuration works for Australian and New Zealand research
+communities, though the concept could easily be extended.
 
 Quick start
 -----------

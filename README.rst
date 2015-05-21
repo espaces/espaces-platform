@@ -4,17 +4,18 @@ eSpaces Platform Buildout
 This Buildout configuration creates a Plone-based environment for operating
 eSpaces, an environment for collaboration in research communities.  This
 specific configuration works for Australian and New Zealand research
-communities, though the concept could easily be extended.
+communities, though the concept can easily be extended.
 
 Quick start
 -----------
 
 Bootstrap your environment with the automated deployment configuration
-(powered by Vagrant for development, and Salt for provisioning) located at
+(powered by Vagrant for development and Salt for provisioning) located at
 https://github.com/espaces/espaces-deployment. 
 
-Otherwise, install relevant packages for a default Plone 4.3.x installation on
-your favourite OS and run Buildout accordingly::
+Otherwise, you can manually configure Plone itself. Install the relevant
+dependency packages for a default Plone 4.3.x installation on your favourite
+OS and run Buildout accordingly on the code in this repository::
 
     python bootstrap.py
     ./bin/buildout

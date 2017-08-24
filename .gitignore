@@ -14,6 +14,7 @@ etc
 fake-eggs
 include
 lib
+lib64
 local
 parts
 src
@@ -27,3 +28,4 @@ var
 *.pyo
 *.tmp*
 locales/*.mo
+pip-selfcheck.json
